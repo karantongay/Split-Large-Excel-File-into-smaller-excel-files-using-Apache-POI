@@ -1,33 +1,3 @@
-Motivation:
-
-In most of the applications, especially those that deal with excel sheets often face different issues if the excel files are
-large enough in size.
-
-Such files may not be opened on a computer and therefore cannot be used for further processing if there is a need to open the
-excel file and verify the contents.
-
-This tutorial helps to quickly develop a Java application that handles such large excel files and splits them into separate excel files of
-defined number of rows which can be opened easily.
-
-Objective:
-Take excel file as input, split it into different excel files by specifying number of rows and maintain the headers of each column in 
-all the splitted file.
-
-Essential Tools:
-1. Eclipse (Mars or Above)
-2. Supporting Apache POI Jars
-3. Excel File
-
-Code:
-
-There are many builds of Apache POI, but this tutorial uses the apache poi-3.14 build which also supports the .xlsx file formats and 
-also provides different options even to maintain styles as it is from the original excel file.
-
-The following code addresses the minimal requirements to split the excel files wherein the original headers of the rows are applied for
-each splitted file. For additional settings such as identifying cell styles, null values etc. please refer the official documentation of
-Apache POI and the commented lines in the code for some guidance.
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -280,9 +250,10 @@ public class Splitter {
 
 }
 
-
+/*
 Output:
 
 The code will generate the new folder named "Split" in the current working directory wherein all the splitted excel files will be 
 stored, these new excel files will be named as "newfilename1.xlsx", "newfilename2.xlsx" and so on until the main excel file is split
 into 10 K rows each.
+*/
