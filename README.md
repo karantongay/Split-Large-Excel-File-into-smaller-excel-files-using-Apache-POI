@@ -1,4 +1,4 @@
-# Split-Large-Excel-File-and-convert-it-into-Google-Spreadsheets
+# Split Large Excel File into smaller excel files using Apache POI
 
 This application is a utility that is used to convert a Large Excel Spreadsheet to different Google Spreadsheets which can be further used by the applications that operate by connecting to google spreadsheets.
 
