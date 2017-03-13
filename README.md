@@ -281,7 +281,7 @@ Apache POI and the commented lines in the code for some guidance.
         new Splitter("file.xlsx", 10000, "filepath", "newfilename");  //No of rows in each split: 10 K
     }
 
-}
+    }
 
 
 Output:
