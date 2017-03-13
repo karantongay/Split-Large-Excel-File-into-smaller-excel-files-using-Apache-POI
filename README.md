@@ -32,37 +32,37 @@ each splitted file. For additional settings such as identifying cell styles, nul
 Apache POI and the commented lines in the code for some guidance.
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+    import java.io.File;
+    import java.io.FileInputStream;
+    import java.io.FileNotFoundException;
+    import java.io.FileOutputStream;
+    import java.io.IOException;
+    import java.util.ArrayList;
+    import java.util.List;
 
-import javax.swing.ProgressMonitorInputStream;
+    import javax.swing.ProgressMonitorInputStream;
 
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.openxml4j.util.ZipSecureFile;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.streaming.SXSSFCell;
-import org.apache.poi.xssf.streaming.SXSSFRow;
-import org.apache.poi.xssf.streaming.SXSSFSheet;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;  
+    import org.apache.poi.EncryptedDocumentException;
+    import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+    import org.apache.poi.openxml4j.opc.OPCPackage;
+    import org.apache.poi.openxml4j.util.ZipSecureFile;
+    import org.apache.poi.ss.usermodel.Cell;
+    import org.apache.poi.ss.usermodel.CellStyle;
+    import org.apache.poi.ss.usermodel.DateUtil;
+    import org.apache.poi.ss.usermodel.Row;
+    import org.apache.poi.ss.usermodel.Workbook;
+    import org.apache.poi.xssf.streaming.SXSSFCell;
+    import org.apache.poi.xssf.streaming.SXSSFRow;
+    import org.apache.poi.xssf.streaming.SXSSFSheet;
+    import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+    import org.apache.poi.xssf.usermodel.XSSFSheet;
+    import org.apache.poi.xssf.usermodel.XSSFWorkbook;  
 
-import com.google.api.services.drive.Drive;
-import com.google.api.services.drive.Drive.Files;
-import com.google.api.services.drive.model.FileList;
+    import com.google.api.services.drive.Drive;
+    import com.google.api.services.drive.Drive.Files;
+    import com.google.api.services.drive.model.FileList;
 
-public class Splitter {
+    public class Splitter {
 
     private final String fileName;
     private final int maxRows;
