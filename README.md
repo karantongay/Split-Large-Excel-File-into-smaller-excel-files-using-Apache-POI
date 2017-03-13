@@ -277,9 +277,9 @@ Apache POI and the commented lines in the code for some guidance.
     }
 
     public static void main(String[] args) throws FileNotFoundException{
-        /* This will create a new workbook every 1000 rows.
+        /* This will create a new workbook every 10000 rows.
         //new Splitter(filename.xlsx, No of split rows, filepath, newfilename);
-        new Splitter("file.xlsx", 10000, "filepath", "newfilename");  //No of rows to split: 10 K
+        new Splitter("file.xlsx", 10000, "filepath", "newfilename");  //No of rows in each split: 10 K
     }
 
 }
