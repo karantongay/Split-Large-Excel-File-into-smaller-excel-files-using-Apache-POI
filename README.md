@@ -1,8 +1,8 @@
-# Split Large Excel File into smaller excel files using Apache POI
+# Split Large Excel File into smaller excel files using Apache POI #
 
 This application is a utility that is used to convert a Large Excel Spreadsheet to different smaller excel sheets which can be further used for various applications.
 
-Motivation:
+## Motivation: ##
 
 In most of the applications, especially those that deal with excel sheets often face different issues if the excel files are
 large enough in size.
@@ -10,19 +10,18 @@ large enough in size.
 Such files may not be opened on a computer and therefore cannot be used for further processing if there is a need to open the
 excel file and verify the contents.
 
-This tutorial helps to quickly develop a Java application that handles such large excel files and splits them into separate excel files of
-defined number of rows which can be opened easily.
+This tutorial helps to quickly develop a Java application that handles such large excel files and splits them into separate excel files of defined number of rows which can be opened easily.
 
-Objective:
+## Objective: ##
 Take excel file as input, split it into different excel files by specifying number of rows and maintain the headers of each column in 
-all the splitted file.
+all the splitted files.
 
-Essential Tools:
-1. Eclipse (Mars or Above)
-2. Supporting Apache POI Jars
-3. Excel File
+## Essential Tools: ##
+* Eclipse IDE (Mars or Above)
+* Supporting Apache POI Jars
+* Excel File
 
-Code:
+## Code: ##
 
 There are many builds of Apache POI, but this tutorial uses the apache poi-3.14 build which also supports the .xlsx file formats and 
 also provides different options even to maintain styles as it is from the original excel file.
