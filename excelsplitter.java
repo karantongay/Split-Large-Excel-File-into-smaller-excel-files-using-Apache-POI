@@ -6,14 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ProgressMonitorInputStream;
-
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -24,11 +18,8 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;  
 
-import com.google.api.services.drive.Drive;
-import com.google.api.services.drive.Drive.Files;
-import com.google.api.services.drive.model.FileList;
 
-public class Splitter {
+public class SplitFile {
 
     private final String fileName;
     private final int maxRows;
@@ -38,9 +29,8 @@ public class Splitter {
     public static String taskname;
     public static int rowcounter;
 
-    public Splitter(String fileName, final int maxRows, String filepath, String userfilename) throws FileNotFoundException {
+    public SplitFile(String fileName, final int maxRows, String filepath, String userfilename) throws FileNotFoundException {
     	path = filepath;
-        ZipSecureFile.setMinInflateRatio(0);
         taskname = userfilename;
         this.fileName = fileName;
         this.maxRows = maxRows;
@@ -71,7 +61,7 @@ public class Splitter {
         List<SXSSFWorkbook> workbooks = new ArrayList<SXSSFWorkbook>();
 
         SXSSFWorkbook wb = new SXSSFWorkbook();
-        SXSSFSheet sh = wb.createSheet();
+        SXSSFSheet sh = (SXSSFSheet) wb.createSheet();
 
         SXSSFRow newRow,headRow = null;
         SXSSFCell newCell;
@@ -119,25 +109,25 @@ public class Splitter {
             	headflag = 1;
                 workbooks.add(wb);
                 wb = new SXSSFWorkbook();
-                sh = wb.createSheet();
+                sh = (SXSSFSheet) wb.createSheet();
                 rowCount = 0;
              
             }
             	if(headflag == 1)
             	{
-            		newRow = sh.createRow(rowCount++);
+            		newRow = (SXSSFRow) sh.createRow(rowCount++);
             		headflag = 0;
             		for(int k=0;k<cols;k++)
             		{
-    	                newCell = newRow.createCell(colCount++);
+    	                newCell = (SXSSFCell) newRow.createCell(colCount++);
     	                newCell.setCellValue(headCellarr[k]);
     	               
             		}
             		colCount = 0;
-            		newRow = sh.createRow(rowCount++);
+            		newRow = (SXSSFRow) sh.createRow(rowCount++);
             		
             		 for (Cell cell : row) {
-     	                newCell = newRow.createCell(colCount++);
+     	                newCell = (SXSSFCell) newRow.createCell(colCount++);
      	                if(cell.getCellType() == Cell.CELL_TYPE_BLANK)
      	                {
      	                	newCell.setCellValue("-");
@@ -154,14 +144,14 @@ public class Splitter {
             	else
             	{
             		rowcounter++;
-            	newRow = sh.createRow(rowCount++);
+            	newRow = (SXSSFRow) sh.createRow(rowCount++);
             	for(int cn=0; cn<row.getLastCellNum(); cn++) {
      		       // If the cell is missing from the file, generate a blank one
      		       // (Works by specifying a MissingCellPolicy)
      		       Cell cell = row.getCell(cn, Row.CREATE_NULL_AS_BLANK);
      		       // Print the cell for debugging
      		       //System.out.println("CELL: " + cn + " --> " + cell.toString());
-     		       newCell = newRow.createCell(cn);
+     		       newCell = (SXSSFCell) newRow.createCell(cn);
      		       if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC)
      		       {
      		    	  newCell.setCellValue(cell.getNumericCellValue());
@@ -243,17 +233,8 @@ public class Splitter {
     }
 
     public static void main(String[] args) throws FileNotFoundException{
-        /* This will create a new workbook every 1000 rows.
-        //new Splitter(filename.xlsx, No of split rows, filepath, newfilename);
-        new Splitter("file.xlsx", 10000, "filepath", "newfilename");  //No of rows to split: 10 K
+    	// This will create a new workbook every 1000 rows.
+        // new Splitter(filename.xlsx, No of split rows, filepath, newfilename);
+        new SplitFile("filepath/filename.xlsx", 10000, "filepath", "newfilename");  //No of rows to split: 10 K
     }
-
 }
-
-/*
-Output:
-
-The code will generate the new folder named "Split" in the current working directory wherein all the splitted excel files will be 
-stored, these new excel files will be named as "newfilename1.xlsx", "newfilename2.xlsx" and so on until the main excel file is split
-into 10 K rows each.
-*/
